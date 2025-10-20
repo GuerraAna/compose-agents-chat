@@ -11,6 +11,7 @@ junit = "4.13.2"
 kotlin = "2.2.20"
 kotlinx-coroutines = "1.10.2"
 mockk = "1.14.6"
+roboletric = "4.16"
 
 [libraries]
 # AndroidX
@@ -37,6 +38,7 @@ kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.re
 kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "roboletric" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }

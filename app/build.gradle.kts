@@ -26,6 +26,9 @@ android {
                     "proguard-rules.pro"
             )
         }
+        debug {
+            enableAndroidTestCoverage = true
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -36,6 +39,12 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
@@ -59,6 +68,7 @@ dependencies {
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.robolectric)
 
     // Instrumented Testing
     androidTestImplementation(libs.androidx.junit)

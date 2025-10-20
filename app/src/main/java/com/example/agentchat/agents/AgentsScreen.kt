@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.agentchat.commons.theme.ui.AgentChatTheme
 import androidx.compose.ui.unit.dp
@@ -31,7 +32,9 @@ internal fun AgentsScreen(uiState: AgentsUiState) {
 private fun OnLoading() {
     Surface(modifier = Modifier.fillMaxSize()) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag("agent_name_placeholder"),
             contentAlignment = Alignment.Center
         ) {
             Box(
@@ -50,21 +53,23 @@ private fun OnLoading() {
 @Composable
 private fun OnSuccess(message: String?) {
     message?.let {
-        SetupAgentText(name = message)
+        SetupAgentMessage("Hello, $message!")
     } ?: OnError(message = null)
 }
 
 @Composable
 private fun OnError(message: String?) {
     val errorMessage = message ?: "Unknown Error"
-    SetupAgentText(name = errorMessage)
+    SetupAgentMessage(message = errorMessage)
 }
 
 @Composable
-private fun SetupAgentText(name: String) {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+private fun SetupAgentMessage(message: String) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize().testTag("agent_message")
+    ) { innerPadding ->
         Text(
-            text = "Hello, $name!",
+            text = message,
             modifier = Modifier.padding(paddingValues = innerPadding)
         )
     }
