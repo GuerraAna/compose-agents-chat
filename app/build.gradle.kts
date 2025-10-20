@@ -56,5 +56,16 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation("com.google.accompanist:accompanist-placeholder-material:0.34.0")
+    implementation(libs.accompanist.placeholder.material)
+
+    // Unit testing libraries
+    // Kotlin test (bindings for kotlin.test + JUnit)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.kotlin.test.junit)
+
+    // Mocking
+    testImplementation(libs.mockk)
+
+    // Coroutines test utilities (runTest, TestScope, etc.)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

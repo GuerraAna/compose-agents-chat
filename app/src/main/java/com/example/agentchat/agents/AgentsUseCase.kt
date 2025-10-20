@@ -1,5 +1,8 @@
 package com.example.agentchat.agents
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 internal class AgentsUseCase(
     private val repository: AgentsRepository = AgentsRepository()
 ) {
@@ -7,5 +10,7 @@ internal class AgentsUseCase(
     /**
      * Get the agent name from the repository.
      */
-    fun getAgentName(): String = repository.getAgentName()
+    suspend fun getAgentName(): String = withContext(Dispatchers.IO) {
+        repository.getAgentName()
+    }
 }
