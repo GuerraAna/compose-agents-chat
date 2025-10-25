@@ -13,7 +13,9 @@ internal class AgentsViewModel @JvmOverloads constructor(
     useCase: AgentsUseCase = AgentsUseCase()
 ) : AndroidViewModel(application) {
 
-    private val _agentsUiState = MutableStateFlow(value = AgentsUiState(isLoading = true))
+    private val _agentsUiState = MutableStateFlow(
+        value = AgentsUiState(isLoading = true)
+    )
 
     /**
      * Represents the UI state for the Agents screen.
@@ -35,15 +37,15 @@ internal class AgentsViewModel @JvmOverloads constructor(
             _agentsUiState.value = AgentsUiState(
                 message = result,
                 isLoading = false,
-                isSuccess = true
+                isError = false
             )
         } catch (error: Exception) {
             val errorMessage: String = requireNotNull(error.message)
 
             _agentsUiState.value = AgentsUiState(
                 message = errorMessage,
-                isError = true,
-                isLoading = false
+                isLoading = false,
+                isError = true
             )
         }
     }
